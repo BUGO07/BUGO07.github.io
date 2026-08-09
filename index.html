@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Giorgi Grigalashvili</title>
+		<meta name="description" content="Giorgi Grigalashvili (BUGO07) — systems and graphics programmer. Rust, operating systems, compilers, renderers and games.">
+		<meta property="og:title" content="Giorgi Grigalashvili">
+		<meta property="og:description" content="Systems and graphics programmer. Rust, operating systems, compilers, renderers and games.">
+		<meta property="og:type" content="website">
+		<link rel="stylesheet" href="style.css">
+		<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+	</head>
+	<body>
+		<header>
+			<h1>Giorgi Grigalashvili<span class="cursor">_</span></h1>
+			<p class="tagline">bugo07 &middot; systems &amp; graphics programmer &middot; Tbilisi, Georgia</p>
+			<nav>
+				<a href="./" aria-current="page">home</a>
+				<a href="projects/">projects</a>
+				<a href="https://github.com/BUGO07">github</a>
+				<a href="mailto:g.grigalashvili@balaveri.com">email</a>
+			</nav>
+		</header>
+
+		<main>
+			<section id="about">
+				<h2>About</h2>
+
+				<p>
+				I write systems and graphics code, and I make games. Those two pull in
+				opposite directions often enough to keep things interesting.
+				</p>
+
+				<p>
+				On the systems side I like low-level software: operating systems, compilers,
+				and anything that sits close to the hardware. Rust is my main language,
+				mostly because it lets me care about how software actually talks to the
+				machine without giving up on writing efficient, reliable code.
+				</p>
+
+				<p>
+				The other half of my time goes to game development and graphics. I like
+				experimenting with realistic simulations &mdash; light physics, ray and path
+				tracing, fluid dynamics &mdash; and then optimizing them as far as I can,
+				until the technique is fast enough to actually be usable in real time inside
+				a game.
+				</p>
+
+				<p>
+				Besides Rust I've worked with and like TypeScript, C++, C# and Java. I'm
+				always learning, building and collaborating &mdash; usually by starting yet
+				another project I probably shouldn't have.
+				</p>
+			</section>
+
+			<section id="background">
+				<h2>Background</h2>
+
+				<dl class="kv">
+					<dt>Now</dt>
+					<dd>
+					Embedded Rust Engineer at <a href="https://balaveri.com">Balaveri</a>
+					since February 2026, writing firmware in Rust for microcontrollers
+					&mdash; the kind of work where the hardware datasheet is as much a part
+					of the job as the code is.
+					</dd>
+
+					<dt>Studying</dt>
+					<dd>
+					2nd year of a computer science bachelor's degree at
+					<a href="https://www.tsu.ge/en">Tbilisi State University</a>.
+					</dd>
+				</dl>
+			</section>
+
+			<section id="toolbox">
+				<h2>Toolbox</h2>
+
+				<dl class="kv">
+					<dt>Languages</dt>
+					<dd>Rust (main), TypeScript, C++, C#, Java</dd>
+
+					<dt>Graphics</dt>
+					<dd>wgpu / WGSL, OpenGL / GLSL, compute shaders, Bevy</dd>
+
+					<dt>Systems</dt>
+					<dd>x86_64 and aarch64 osdev, LLVM, embedded / <code>no_std</code>, embassy</dd>
+
+					<dt>Other</dt>
+					<dd>Linux, git, a stubborn dislike for unnecessary allocations</dd>
+				</dl>
+			</section>
+
+			<section id="projects">
+				<h2>Projects</h2>
+
+				<p>
+				Most of what I know, I learned by building something badly first and then
+				rewriting it. Here's the pile &mdash; the
+				<a href="projects/">projects page</a> has the longer version of each.
+				</p>
+
+				<h3>Operating systems &amp; low level</h3>
+				<dl>
+					<dt><a href="projects/#chronos">ChronOS</a></dt>
+					<dd>
+					A hobby x86_64 kernel written from scratch, with a preemptive scheduler,
+					ACPI, PCI and a shell.
+					<span class="tags">Rust &middot; osdev &middot; limine</span>
+					</dd>
+
+					<dt><a href="projects/#flappyos">FlappyOS</a></dt>
+					<dd>
+					Flappy Bird that boots. There's no OS underneath it, because it
+					<i>is</i> the OS.
+					<span class="tags">Rust &middot; bare metal &middot; Bevy ECS</span>
+					</dd>
+
+					<dt><a href="projects/#emulating-6502">Emulating6502</a></dt>
+					<dd>
+					An emulator for the MOS 6502: registers, status flags and 64&nbsp;KiB of
+					address space.
+					<span class="tags">Rust &middot; emulation</span>
+					</dd>
+				</dl>
+
+				<h3>Languages &amp; compilers</h3>
+				<dl>
+					<dt><a href="projects/#lang">Lang</a></dt>
+					<dd>
+					My own language: lexer, recursive descent parser, semantic analyzer,
+					an interpreter and an LLVM backend.
+					<span class="tags">Rust &middot; LLVM &middot; compiler</span>
+					</dd>
+				</dl>
+
+				<h3>Graphics &amp; simulation</h3>
+				<dl>
+					<dt><a href="projects/#raytracing">RayTracing</a></dt>
+					<dd>
+					A ray tracer on the CPU first, then again on the GPU when patience
+					ran out.
+					<span class="tags">Rust &middot; CPU &middot; GPU</span>
+					</dd>
+
+					<dt><a href="projects/#raymarching">RayMarching</a></dt>
+					<dd>
+					Real-time signed distance field marching, with spheres melting into
+					each other.
+					<span class="tags">Rust &middot; GLSL &middot; SDF</span>
+					</dd>
+
+					<dt><a href="projects/#particle-system">Particle System</a></dt>
+					<dd>
+					15,000 particles simulated entirely on the GPU, with the CPU kept out
+					of the loop.
+					<span class="tags">Rust &middot; GLSL &middot; compute</span>
+					</dd>
+
+					<dt><a href="projects/#black-hole">BlackHole</a></dt>
+					<dd>
+					Light rays bending through the gravitational field of a black hole,
+					trails and all.
+					<span class="tags">Rust &middot; wgpu &middot; WGSL</span>
+					</dd>
+
+					<dt><a href="projects/#software-rusterizer">SoftwareRusterizer</a></dt>
+					<dd>
+					A 3D rasterizer with no GPU involved. Just a framebuffer and a lot of
+					math.
+					<span class="tags">Rust &middot; CPU</span>
+					</dd>
+
+					<dt><a href="projects/#whirlwind">Whirlwind</a></dt>
+					<dd>
+					A small engine with its own ECS that runs on desktop, in the browser
+					and on Android.
+					<span class="tags">Rust &middot; wgpu &middot; wasm</span>
+					</dd>
+				</dl>
+
+				<h3>Games</h3>
+				<dl>
+					<dt><a href="projects/#ferriscraft">FerrisCraft</a></dt>
+					<dd>
+					A voxel game with procedural biomes, a fast culled mesher, and crabs
+					for mobs.
+					<span class="tags">Rust &middot; Bevy &middot; voxel</span>
+					</dd>
+
+					<dt><a href="projects/#chess">Chess</a></dt>
+					<dd>
+					GPU-accelerated chess, with shader effects nobody asked for.
+					<span class="tags">Rust &middot; wgpu &middot; shaders</span>
+					</dd>
+				</dl>
+
+				<h3>Tools &amp; other things</h3>
+				<dl>
+					<dt><a href="projects/#xenon">Xenon</a></dt>
+					<dd>
+					A terminal text editor built on a rope data structure.
+					<span class="tags">Rust &middot; ratatui &middot; TUI</span>
+					</dd>
+
+					<dt><a href="projects/#schnellxplorer">Schnellxplorer</a></dt>
+					<dd>
+					An attempt at a very fast file explorer. Archived, but it taught me
+					a lot.
+					<span class="tags">Rust &middot; archived</span>
+					</dd>
+
+					<dt><a href="projects/#screentime">ScreenTime</a></dt>
+					<dd>
+					A tiny daemon that tracks how long I actually spend in each app.
+					<span class="tags">Rust &middot; Linux</span>
+					</dd>
+
+					<dt><a href="projects/#machine-learning">MachineLearning</a></dt>
+					<dd>
+					A neural network written from scratch, in safe Rust, out of pure spite.
+					<span class="tags">Rust &middot; MNIST</span>
+					</dd>
+
+					<dt><a href="projects/#volt">Volt</a></dt>
+					<dd>
+					A general-purpose Discord bot, and the reason I learned to program.
+					<span class="tags">TypeScript &middot; Discord</span>
+					</dd>
+				</dl>
+
+				<h3>Ancient history</h3>
+				<dl>
+					<dt><a href="projects/#mutechat">MuteChat</a></dt>
+					<dd>
+					A Minecraft server plugin for muting chat. One of my first projects.
+					<span class="tags">Java &middot; Spigot</span>
+					</dd>
+
+					<dt><a href="projects/#dontjump">DontJump</a></dt>
+					<dd>
+					A challenge plugin where jumping nearly kills you. Exactly as
+					advertised.
+					<span class="tags">Java &middot; Spigot</span>
+					</dd>
+				</dl>
+			</section>
+
+			<section id="contact">
+				<h2>Contact</h2>
+
+				<dl class="kv">
+					<dt>Email</dt>
+					<dd><a href="mailto:g.grigalashvili@balaveri.com">g.grigalashvili@balaveri.com</a></dd>
+
+					<dt>GitHub</dt>
+					<dd><a href="https://github.com/BUGO07">BUGO07</a></dd>
+
+					<dt>LinkedIn</dt>
+					<dd><a href="https://www.linkedin.com/in/giorgi-grigalashvili-474565389">giorgi-grigalashvili</a></dd>
+
+					<dt>itch.io</dt>
+					<dd><a href="https://bugolmao.itch.io">bugolmao</a></dd>
+				</dl>
+			</section>
+		</main>
+
+		<footer>
+			<span>Giorgi Grigalashvili &mdash; <span id="year"></span></span>
+			<span>this entire website was vibecoded</span>
+			<span><a href="https://github.com/BUGO07/BUGO07.github.io">source</a></span>
+		</footer>
+
+		<script>
+			document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Projects — Giorgi Grigalashvili</title>
+		<meta name="description" content="Projects by Giorgi Grigalashvili (BUGO07): operating systems, compilers, renderers, simulations, games and tools — mostly in Rust.">
+		<link rel="stylesheet" href="../style.css">
+		<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+	</head>
+	<body>
+		<header>
+			<h1>Projects<span class="cursor">_</span></h1>
+			<p class="tagline">roughly in order of how much of my sleep they cost</p>
+			<nav>
+				<a href="../">home</a>
+				<a href="./" aria-current="page">projects</a>
+				<a href="https://github.com/BUGO07">github</a>
+				<a href="mailto:g.grigalashvili@balaveri.com">email</a>
+			</nav>
+		</header>
+
+		<main>
+			<section id="operating-systems">
+				<h2>Operating systems &amp; low level</h2>
+
+				<article id="chronos">
+					<h3><a href="https://github.com/BUGO07/chronos">ChronOS</a></h3>
+					<p class="tags">Rust &middot; x86_64 &middot; limine</p>
+					<p class="lede">a hobby operating system, held together by duct tape</p>
+					<p>
+					A kernel written from scratch in Rust, booted with Limine. It has a
+					terminal emulator, serial IO, interrupt handling, five different timer
+					sources (PIT, TSC, KVM, HPET and LAPIC), a real time clock, memory
+					management, PS/2 keyboard and mouse drivers, ACPI, basic PCI, a shell
+					and a RAM filesystem &mdash; plus a preemptive scheduler, single core
+					for now.
+					</p>
+					<p>
+					Next on the list: NVMe, USB, a libc port, and more architectures than
+					just x86_64.
+					</p>
+				</article>
+
+				<article id="flappyos">
+					<h3><a href="https://github.com/BUGO07/flappyos">FlappyOS</a></h3>
+					<p class="tags">Rust &middot; bare metal &middot; Bevy ECS</p>
+					<p class="lede">Flappy Bird, except it's an operating system</p>
+					<p>
+					There is no OS under this game, because the game is the OS. It boots
+					straight into Flappy Bird: framebuffer driver, serial IO, interrupts,
+					timers, a memory allocator and a PS/2 keyboard driver underneath, with
+					the game itself running on Bevy's ECS &mdash; state management, basic
+					2D physics, sprite rendering, score and game over screens.
+					</p>
+					<p>
+					Inspired by
+					<a href="https://www.youtube.com/watch?v=FaILnmUYS_U">TetrisOS</a>.
+					</p>
+				</article>
+
+				<article id="emulating-6502">
+					<h3><a href="https://github.com/BUGO07/emulating-6502">Emulating6502</a></h3>
+					<p class="tags">Rust &middot; emulation</p>
+					<p class="lede">the CPU behind the NES and the Commodore 64</p>
+					<p>
+					An emulator for the MOS 6502: the accumulator, index registers, stack
+					pointer and program counter, the full processor status register modelled
+					as bitflags, and a flat 64&nbsp;KiB address space that instructions
+					decode and walk through one step at a time. A very direct way to learn
+					what a CPU actually is.
+					</p>
+				</article>
+			</section>
+
+			<section id="languages">
+				<h2>Languages &amp; compilers</h2>
+
+				<article id="lang">
+					<h3><a href="https://github.com/BUGO07/lang">Lang</a></h3>
+					<p class="tags">Rust &middot; LLVM &middot; compiler</p>
+					<p class="lede">my own programming language, front to back</p>
+					<p>
+					A complete compiler pipeline written in Rust: a lexer, a recursive
+					descent parser, a semantic analyzer, and then two backends &mdash; a
+					tree-walking interpreter, or LLVM codegen that compiles the whole thing
+					down to native machine code.
+					</p>
+					<p>
+					The language itself has explicit and inferred types, functions with
+					arrow return types, implicit returns and formatted printing:
+					</p>
+					<pre><code>func add_three(i32 x, i32 y, i32 z) => i32 {
+    return x + y + z;
+}
+
+func main() => i32 {
+    let output: String = "the result";
+    let x: i32 = 21;
+    let y = -69; // inferred
+    print("{} is: {}", output, add_three(x, y, 420));
+}</code></pre>
+				</article>
+			</section>
+
+			<section id="graphics">
+				<h2>Graphics &amp; simulation</h2>
+
+				<p>
+				The recurring theme: take something from a paper or a video, get it
+				working, then find out how fast it can be made to run.
+				</p>
+
+				<article id="raytracing">
+					<h3><a href="https://github.com/BUGO07/raytracing">RayTracing</a></h3>
+					<p class="tags">Rust &middot; CPU &middot; GPU</p>
+					<p class="lede">rendering by following light around</p>
+					<p>
+					A ray tracer written on the CPU first, so that every part of it &mdash;
+					ray generation, intersection, bounces, materials &mdash; had to be
+					understood rather than handed to a library. Inspired by
+					<a href="https://www.youtube.com/watch?v=Qz0KTGYJtUk">Sebastian Lague's video</a>.
+					</p>
+					<p>
+					When the CPU version got too slow to iterate on, I wrote
+					<a href="https://github.com/BUGO07/raytracing-compute">a GPU version</a>
+					in a compute shader, along with
+					<a href="https://github.com/BUGO07/voxel-raytracing">a voxel variant</a>
+					and <a href="https://github.com/BUGO07/pathtracing">a path tracer</a>.
+					</p>
+				</article>
+
+				<article id="raymarching">
+					<h3><a href="https://github.com/BUGO07/raymarching">RayMarching</a></h3>
+					<p class="tags">Rust &middot; GLSL &middot; SDF</p>
+					<p class="lede">rendering shapes defined by distance, not triangles</p>
+					<p>
+					A real-time ray marcher running in an OpenGL compute shader through
+					<code>glium</code>. Instead of geometry, the scene is signed distance
+					functions &mdash; spheres blended with a smooth minimum, so they melt
+					into each other rather than intersect &mdash; and each pixel steps a ray
+					forwards until it hits something.
+					</p>
+					<p>
+					It renders into a texture at up to 1000 iterations per ray, with a free
+					flying camera and mouse look, so you can move through the scene while
+					it's being marched.
+					</p>
+				</article>
+
+				<article id="particle-system">
+					<h3><a href="https://github.com/BUGO07/particle-system">Particle System</a></h3>
+					<p class="tags">Rust &middot; GLSL &middot; compute</p>
+					<p class="lede">15,000 particles that never touch the CPU</p>
+					<p>
+					Positions and velocities live in GPU buffers, a compute shader integrates
+					them every frame, and a vertex and fragment shader pair draws the result
+					&mdash; the CPU only sets up the camera and gets out of the way. With a
+					free flying camera to fly through the middle of it.
+					</p>
+				</article>
+
+				<article id="black-hole">
+					<h3><a href="https://github.com/BUGO07/black_hole">BlackHole</a></h3>
+					<p class="tags">Rust &middot; wgpu &middot; WGSL</p>
+					<p class="lede">what light does when it gets too close</p>
+					<p>
+					A simulation of rays bending through the gravitational field around a
+					black hole, written with <code>wgpu</code> and WGSL. Each ray carries a
+					trail of its last 64 positions, so the curve it takes stays visible as it
+					falls inwards, and a compute shader paints the whole field into a storage
+					texture every frame.
+					</p>
+				</article>
+
+				<article id="software-rusterizer">
+					<h3><a href="https://github.com/BUGO07/software-rusterizer">SoftwareRusterizer</a></h3>
+					<p class="tags">Rust &middot; CPU</p>
+					<p class="lede">3D rendering with the GPU deliberately left out</p>
+					<p>
+					A software rasterizer: <code>softbuffer</code> hands it a raw window
+					framebuffer, and everything after that &mdash; loading the model,
+					transforming vertices, projecting them and filling triangles pixel by
+					pixel &mdash; is done by hand on the CPU.
+					</p>
+					<p>
+					It loads models through
+					<a href="https://github.com/BUGO07/whirlwind_obj">whirlwind_obj</a>, an
+					OBJ parser I wrote for my engine, which meant one less dependency and one
+					more thing to debug.
+					</p>
+				</article>
+
+				<article id="whirlwind">
+					<h3><a href="https://github.com/BUGO07/whirlwind">Whirlwind</a></h3>
+					<p class="tags">Rust &middot; wgpu &middot; wasm</p>
+					<p class="lede">a small engine, written to find out how engines work</p>
+					<p>
+					A renderer and engine built on <code>wgpu</code>, with its own ECS
+					&mdash; entities, components and a world to store them in &mdash; rather
+					than pulling one in. It handles textures, WGSL materials and model
+					loading through its own OBJ parser.
+					</p>
+					<p>
+					The same codebase compiles to a native desktop app, to WebAssembly for
+					the browser through <code>wasm-bindgen</code>, and to Android via winit's
+					native activity support.
+					</p>
+				</article>
+			</section>
+
+			<section id="games">
+				<h2>Games</h2>
+
+				<article id="ferriscraft">
+					<h3><a href="https://github.com/BUGO07/ferriscraft">FerrisCraft</a></h3>
+					<p class="tags">Rust &middot; Bevy &middot; voxel</p>
+					<p class="lede">a blazingly fast voxel game in pure Rust</p>
+					<p>
+					A voxel sandbox built on Bevy: a culled mesher that keeps chunk rebuilds
+					cheap, procedural terrain generation with biomes, a first person character
+					controller, block placing and breaking, saving and restoring the world,
+					and Ferris entities wandering around in it.
+					</p>
+					<p>
+					There is also
+					<a href="https://github.com/BUGO07/ferriscraft-gl-experiments">an earlier version</a>
+					where I wrote the voxel engine myself in OpenGL, before moving to Bevy.
+					The TODO list currently reads "greedy meshing or something" and "make it
+					into minecraft", which feels about right.
+					</p>
+				</article>
+
+				<article id="chess">
+					<h3><a href="https://github.com/BUGO07/chess-gpu">Chess</a></h3>
+					<p class="tags">Rust &middot; wgpu &middot; shaders</p>
+					<p class="lede">chess, but rendered on the GPU with far too many effects</p>
+					<p>
+					A chess game that pushes rendering onto the GPU so it can afford some
+					genuinely unnecessary shader effects. You can hand it a custom FEN string
+					on startup to begin from any position. The rules engine is, by my own
+					honest assessment, spaghetti &mdash; but it plays.
+					</p>
+					<p>
+					The plan is to move the game logic itself into compute shaders, which is
+					either a great idea or a terrible one.
+					</p>
+				</article>
+			</section>
+
+			<section id="tools">
+				<h2>Tools &amp; other things</h2>
+
+				<article id="xenon">
+					<h3><a href="https://github.com/BUGO07/xenon">Xenon</a></h3>
+					<p class="tags">Rust &middot; ratatui &middot; TUI</p>
+					<p class="lede">a text editor that lives in the terminal</p>
+					<p>
+					Built on <code>ratatui</code> for the interface and a rope data structure
+					for the buffer, so inserting a character in the middle of a large file
+					doesn't mean copying the whole thing. It opens files from the command
+					line, tracks the cursor across lines, and handles key events directly.
+					</p>
+				</article>
+
+				<article id="schnellxplorer">
+					<h3><a href="https://github.com/BUGO07/Schnellxplorer">Schnellxplorer</a></h3>
+					<p class="tags">Rust &middot; archived</p>
+					<p class="lede">an attempt at a blazingly fast file explorer</p>
+					<p>
+					One of my earlier Rust projects: a file explorer built around the idea
+					that browsing a directory tree should never make you wait. It's archived
+					now, but it was where I first started caring about where the time in a
+					program actually goes.
+					</p>
+				</article>
+
+				<article id="screentime">
+					<h3><a href="https://github.com/BUGO07/screentime">ScreenTime</a></h3>
+					<p class="tags">Rust &middot; Linux</p>
+					<p class="lede">a simple Linux process tracker</p>
+					<p>
+					A small daemon that polls running processes every 10 seconds and writes
+					their accumulated runtimes to
+					<code>~/.local/share/processes.json</code>. I built it to find out how
+					long I actually spend in each application, and the answer was not
+					reassuring. Linux only, and meant to run at startup.
+					</p>
+				</article>
+
+				<article id="machine-learning">
+					<h3><a href="https://github.com/BUGO07/machine-learning">MachineLearning</a></h3>
+					<p class="tags">Rust &middot; MNIST</p>
+					<p class="lede">a neural network from scratch on the MNIST dataset</p>
+					<p>
+					Handwritten digit recognition with no ML libraries: just the network, the
+					math, and configurable epochs, batch size and learning rate passed in on
+					the command line.
+					</p>
+					<p>
+					I insisted on writing it in almost entirely safe Rust, which produced code
+					I described in the README as horrendous. Educational in more ways than one.
+					</p>
+				</article>
+
+				<article id="volt">
+					<h3><a href="https://github.com/BUGO07/Volt">Volt</a></h3>
+					<p class="tags">TypeScript &middot; Discord</p>
+					<p class="lede">yet another general purpose Discord bot</p>
+					<p>
+					My oldest project that's still alive, started in 2021 and poked at ever
+					since: moderation, utility and general purpose commands for Discord
+					servers, written in TypeScript. It had its own site back when the domain
+					was still mine.
+					</p>
+					<p>
+					I wrote most of it before I knew much of anything about programming, so
+					the code is a museum of bad decisions &mdash; but it's the project that
+					got me into this in the first place.
+					</p>
+				</article>
+			</section>
+
+			<section id="older">
+				<h2>Ancient history</h2>
+
+				<p>
+				Minecraft server plugins from 2021, back when Java and Spigot were the whole
+				world to me. Leaving them here on purpose.
+				</p>
+
+				<article id="mutechat">
+					<h3><a href="https://github.com/BUGO07/MuteChat">MuteChat</a></h3>
+					<p class="tags">Java &middot; Spigot</p>
+					<p>
+					A Paper/Spigot plugin that lets staff mute and unmute global chat with a
+					single command, with configurable messages and an in-game config command.
+					One of the first things I ever shipped to real users.
+					</p>
+				</article>
+
+				<article id="dontjump">
+					<h3><a href="https://github.com/BUGO07/DontJump">DontJump</a></h3>
+					<p class="tags">Java &middot; Spigot</p>
+					<p>
+					A challenge plugin that does exactly what the name says: it watches player
+					movement, works out from the vertical velocity whether you actually jumped
+					(accounting for jump boost potions and ladders), and drops you to half a
+					heart when you do. There's a <code>/heal</code> command for afterwards.
+					</p>
+				</article>
+			</section>
+
+			<section id="more">
+				<h2>Everything else</h2>
+
+				<p>
+				There's more on <a href="https://github.com/BUGO07">my GitHub</a> that didn't
+				make the list &mdash; Advent of Code solutions, data structures and algorithms
+				implemented from scratch, a
+				<a href="https://bugolmao.itch.io/bevy-jam-7">Bevy game jam entry</a>, a card
+				game I wrote because I was bored, and several operating systems that came
+				before ChronOS and taught me what not to do.
+				</p>
+
+				<p class="back"><a href="../">&larr; back home</a></p>
+			</section>
+		</main>
+
+		<footer>
+			<span>Giorgi Grigalashvili &mdash; <span id="year"></span></span>
+			<span>this entire website was vibecoded</span>
+			<span><a href="https://github.com/BUGO07/BUGO07.github.io">source</a></span>
+		</footer>
+
+		<script>
+			document.getElementById("year").textContent = new Date().getFullYear();
+		</script>
+	</body>
+</html>
