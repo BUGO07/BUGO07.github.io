@@ -42,6 +42,36 @@
 					</p>
 				</article>
 
+				<article id="ferris-linux">
+					<h3><a href="https://github.com/ferris-linux/ferris-linux">Ferris Linux</a></h3>
+					<p class="tags">Rust &middot; Shell &middot; distro</p>
+					<p class="lede">a Linux distribution assembled from source, package by package</p>
+					<p>
+					A from-scratch distribution I contribute to. Every package is a recipe
+					&mdash; a <code>pkg.json</code> declaring its version and dependencies,
+					next to a shell script that points at an upstream tarball and defines how
+					to configure, build and install it. A Python front end draws a curses menu
+					of the whole <code>recipes/</code> tree and builds whatever you tick.
+					Around thirty packages so far: glibc, the Linux kernel, the Limine
+					bootloader, bash, coreutils in both the GNU and the Rust flavours, OpenSSL,
+					curl, ncurses and the usual compression zoo.
+					</p>
+					<p>
+					Most of my work on it has been packaging &mdash; curl, OpenSSL, zlib,
+					libcap, libidn2, ca-certificates, xz, zstd, lz4, bzip2, libseccomp, file
+					and micro &mdash; plus the kernel config, wiring up uutils as an
+					alternative coreutils, and teaching the builder to skip anything it has
+					already built.
+					</p>
+					<p>
+					I also rewrote
+					<a href="https://github.com/ferris-linux/ferris-strap">ferris-strap</a> in
+					Rust. You hand it a JSON config listing the packages you want and a repo to
+					pull recipes from, and it produces a minimal Ferris Linux environment you
+					can chroot into &mdash; roughly what debootstrap does for Debian.
+					</p>
+				</article>
+
 				<article id="flappyos">
 					<h3><a href="https://github.com/BUGO07/flappyos">FlappyOS</a></h3>
 					<p class="tags">Rust &middot; bare metal &middot; Bevy ECS</p>
@@ -60,7 +90,7 @@
 				</article>
 
 				<article id="emulating-6502">
-					<h3><a href="https://github.com/BUGO07/emulating-6502">Emulating6502</a></h3>
+					<h3><a href="https://github.com/BUGO07/emulating-6502">Emulating 6502</a></h3>
 					<p class="tags">Rust &middot; emulation</p>
 					<p class="lede">the CPU behind the NES and the Commodore 64</p>
 					<p>
@@ -112,7 +142,7 @@ func main() => i32 {
 				</p>
 
 				<article id="raytracing">
-					<h3><a href="https://github.com/BUGO07/raytracing">RayTracing</a></h3>
+					<h3><a href="https://github.com/BUGO07/raytracing">Ray Tracing</a></h3>
 					<p class="tags">Rust &middot; CPU &middot; GPU</p>
 					<p class="lede">rendering by following light around</p>
 					<p>
@@ -131,7 +161,7 @@ func main() => i32 {
 				</article>
 
 				<article id="raymarching">
-					<h3><a href="https://github.com/BUGO07/raymarching">RayMarching</a></h3>
+					<h3><a href="https://github.com/BUGO07/raymarching">Ray Marching</a></h3>
 					<p class="tags">Rust &middot; GLSL &middot; SDF</p>
 					<p class="lede">rendering shapes defined by distance, not triangles</p>
 					<p>
@@ -161,7 +191,7 @@ func main() => i32 {
 				</article>
 
 				<article id="black-hole">
-					<h3><a href="https://github.com/BUGO07/black_hole">BlackHole</a></h3>
+					<h3><a href="https://github.com/BUGO07/black_hole">Black Hole Simulation</a></h3>
 					<p class="tags">Rust &middot; wgpu &middot; WGSL</p>
 					<p class="lede">what light does when it gets too close</p>
 					<p>
@@ -174,7 +204,7 @@ func main() => i32 {
 				</article>
 
 				<article id="software-rusterizer">
-					<h3><a href="https://github.com/BUGO07/software-rusterizer">SoftwareRusterizer</a></h3>
+					<h3><a href="https://github.com/BUGO07/software-rusterizer">Software Rusterizer</a></h3>
 					<p class="tags">Rust &middot; CPU</p>
 					<p class="lede">3D rendering with the GPU deliberately left out</p>
 					<p>
@@ -192,7 +222,7 @@ func main() => i32 {
 				</article>
 
 				<article id="whirlwind">
-					<h3><a href="https://github.com/BUGO07/whirlwind">Whirlwind</a></h3>
+					<h3><a href="https://github.com/BUGO07/whirlwind">Whirlwind Game Engine</a></h3>
 					<p class="tags">Rust &middot; wgpu &middot; wasm</p>
 					<p class="lede">a small engine, written to find out how engines work</p>
 					<p>
@@ -289,7 +319,7 @@ func main() => i32 {
 				</article>
 
 				<article id="machine-learning">
-					<h3><a href="https://github.com/BUGO07/machine-learning">MachineLearning</a></h3>
+					<h3><a href="https://github.com/BUGO07/machine-learning">Machine Learning</a></h3>
 					<p class="tags">Rust &middot; MNIST</p>
 					<p class="lede">a neural network from scratch on the MNIST dataset</p>
 					<p>
